@@ -1,0 +1,24 @@
+Aims: 
+  ☐ should accept variable number of images (within reason  > 2 || < 9)
+  ☐ should accept both high and low res images
+  ☐ should be able to define layout and have default
+  ☐ (maybe) should have random layout
+  ☐ clicking an image should zoom it to width of container
+  ☐ should work using a simple html template of: div.container > imgs
+  ☐ (maybe) should work with just root div and inject object of images
+  ☐ should degrade reasonably on old browser (show a grid, but no zooming)
+
+Options:
+  ☐ have to define a ratio?
+  ☐ should image being clicked expand and, either:
+    ☐ push away other images
+    ☐ overlay them
+  Container:
+    ☐ Use SVG
+    ☐ Use Canvas
+
+Testing:
+  ☐ 
+
+Todo: 
+  ☐ use Promises to load bigger images
