@@ -7,6 +7,7 @@ Aims:
   ☐ should work using a simple html template of: div.container > imgs
   ☐ (maybe) should work with just root div and inject object of images
   ☐ should degrade reasonably on old browser (show a grid, but no zooming)
+  ☐ to be functional/reactive - changing the state will update subscribed functions
 
 Options:
   ☐ have to define a ratio?
@@ -14,11 +15,27 @@ Options:
     ☐ push away other images
     ☐ overlay them
   Container:
-    ☐ Use SVG
-    ☐ Use Canvas
+    ☐ Use SVG (more similar to HTML)
+    ☐ Use Canvas (probably good performance)
 
 Testing:
   ☐ 
 
 Todo: 
+  ☐ add functions for defining width to organise
+  ☐ start off defining images explicitely
+  ☐ work out simple algorithm for placing images
+  ☐ different placements
+  ☐ add event listeners on small images
+  ☐ variable number of images
   ☐ use Promises to load bigger images
+
+Work out images size and position:
+  ☐ given a width and height that represents container, else
+    ☐ will have to lookup width from container
+    ☐ if given ratio, use that and width to calc height
+    ☐ if not use default ratio
+    ☐ if width not available, throw error
+  ☐ given how many images there are
+    ☐ if < 3 || > 8 throw error
+  ☐ 
