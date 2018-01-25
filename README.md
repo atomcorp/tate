@@ -1,4 +1,6 @@
-A grid gallery 
+A grid gallery.
+
+Test
 
 ## Images
 Here's a reliable way to make sure we serve balance high-quality, efficient file size images.
