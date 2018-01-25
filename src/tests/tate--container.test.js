@@ -1,17 +1,23 @@
 import Container, {
-  calculateDimensionIfRatio,
+  calculateDimensionWithRatio,
   breakApartRatio
 } from '../tate/tate--container';
 
-const WxH = (w, h) => ({width: w, height: h});
+import * as helpers from '../tate/helpers.js';
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+const { WxH } = helpers;
 
 test('Should convert dimensions by ratio into integers', () => {
   expect(
-    calculateDimensionIfRatio(WxH(100,100), WxH(4, 2))
+    calculateDimensionWithRatio(WxH(100,100), WxH(4, 2))
   ).toEqual(WxH(100, 50));
   expect(
-    calculateDimensionIfRatio(WxH(100, 100), WxH(3, 2))
+    calculateDimensionWithRatio(WxH(100, 100), WxH(3, 2))
   ).toEqual(WxH(100, 67));
+  expect(
+    calculateDimensionWithRatio(WxH(100, 100), WxH(1, 1))
+  ).toEqual(WxH(100, 100));
 });
 
 test('Ratio break should deconstruct ratio strings', () => {

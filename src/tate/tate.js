@@ -1,11 +1,14 @@
 // import Rx from 'rxjs/Rx';
 import { images } from './debug.js';
-import Container from './tate--container.js';
+import ContainerDimensions from './container-dimensions.js';
 type ContainerType = HTMLCanvasElement;
 
 
 const Tate = function(container: ContainerType, options = {}) {
-  const getDimensions = Container(implicitDimensions(container));
+  if (!(container instanceof HTMLCanvasElement)) {
+    throw new Error(`${container} is not a Canvas element`)
+  }
+  const getDimensions = ContainerDimensions(implicitDimensions(container));
 }
 
 

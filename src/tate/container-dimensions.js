@@ -1,44 +1,40 @@
 /* 
 
-  Container
+  Container Dimensions
 
   Work out container size
   Returns width amd height
 
 */
 
+import * as helpers from '../tate/helpers.js';
+const { WxH } = helpers;
 
 type Dimensions = {
   width: number,
   height: number
 }
 
-type Options = {};
-
-const container = (
+const ContainerDimensions = (
   containersImplicitDimensions: Dimensions, 
-  options: Size = {},
   ratio: string = "3:2"
 ) => {
-  const defaultDimensions = containersImplicitDimensions; 
-  const dimensionsIfRatio = calculateDimensionIfRatio(
+  return calculateDimensionWithRatio(
     containersImplicitDimensions, 
     breakApartRatio(ratio)
   );
-
-  return dimensionsIfRatio;
 }
 
-
 // Only calulates height
-export const calculateDimensionIfRatio = (
+export const calculateDimensionWithRatio = (
   dimensions: Dimensions, 
-  ratio: Dimensions
+  ratio: string
 ) => {
-  return {
-    width: Math.round(dimensions.width),
-    height: Math.round(dimensions.width * (ratio.height / ratio.width))
-  }
+  return WxH(
+    Math.round(dimensions.width), 
+    Math.round(
+      dimensions.width * (ratio.height / ratio.width)
+    ));
 }
 
 export const breakApartRatio = (ratio: string) => {
@@ -48,10 +44,7 @@ export const breakApartRatio = (ratio: string) => {
     }
     return Number(value);
   });
-  return {
-    width: ratioArr[0],
-    height: ratioArr[1]
-  }
+  return WxH(ratioArr[0], ratioArr[1]);
 }
 
-export default container;
+export default ContainerDimensions;
