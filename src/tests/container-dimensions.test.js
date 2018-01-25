@@ -1,12 +1,16 @@
-import Container, {
+import ContainerDimensions, {
   calculateDimensionWithRatio,
   breakApartRatio
-} from '../tate/tate--container';
+} from '../tate/container-dimensions.js';
 
 import * as helpers from '../tate/helpers.js';
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 const { WxH } = helpers;
+
+// test('return dimensions', () => {
+//   expect(ContainerDimensions()).toEqual();
+// })
 
 test('Should convert dimensions by ratio into integers', () => {
   expect(

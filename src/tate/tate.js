@@ -1,6 +1,7 @@
 // import Rx from 'rxjs/Rx';
 import { images } from './debug.js';
 import ContainerDimensions from './container-dimensions.js';
+import Options from './options.js';
 type ContainerType = HTMLCanvasElement;
 
 
@@ -9,9 +10,9 @@ const Tate = function(container: ContainerType, options = {}) {
     throw new Error(`${container} is not a Canvas element`)
   }
   const getDimensions = ContainerDimensions(implicitDimensions(container));
+  const getOptions = Options(options);
+  console.log(getOptions)
 }
-
-
 
 type Ratio = {
   width: number,
@@ -25,6 +26,7 @@ const implicitDimensions = (container: ContainerType) => {
   }
 }
 
+/* 
 // these are things that are set and don't change
 const egOptions = {
   lowresImages: {},
@@ -42,6 +44,7 @@ const egState = {
 
 const egCarouselState = {
   activeSlide: 'dom element or id'
-}
+} 
+*/
 
 export default Tate;

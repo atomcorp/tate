@@ -22,20 +22,26 @@ Testing:
   ☐ 
 
 Todo: 
-  ☐ add functions for defining width to organise
+  ✔ add functions for defining width to organise @done(18-01-25 16:01)
   ☐ start off defining images explicitely
+  ☐ make 
   ☐ work out simple algorithm for placing images
   ☐ different placements
   ☐ add event listeners on small images
   ☐ variable number of images
   ☐ use Promises to load bigger images
 
+Initial run:
+  ✔ if width not available, throw error @done(18-01-25 15:33)
+  
+
 Work out images size and position:
-  ☐ given a width and height that represents container, else
-    ☐ will have to lookup width from container
-    ☐ if given ratio, use that and width to calc height
-    ☐ if not use default ratio
-    ☐ if width not available, throw error
+  ☐ return a width and height
+    ✔ given a width and height that represents container, else @done(18-01-25 14:54)
+    ✘ will have to lookup width from container @cancelled(18-01-25 14:54)
+    ✔ if given ratio, use that and width to calc height @done(18-01-25 14:54)
+    ✔ if not use default ratio @done(18-01-25 14:54)
+
   ☐ given how many images there are
     ☐ if < 3 || > 8 throw error
   ☐ 

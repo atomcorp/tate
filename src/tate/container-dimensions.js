@@ -1,3 +1,4 @@
+// @flow
 /* 
 
   Container Dimensions
@@ -28,19 +29,22 @@ const ContainerDimensions = (
 // Only calulates height
 export const calculateDimensionWithRatio = (
   dimensions: Dimensions, 
-  ratio: string
+  ratio: Dimensions
 ) => {
   return WxH(
     Math.round(dimensions.width), 
     Math.round(
       dimensions.width * (ratio.height / ratio.width)
-    ));
+    )
+  );
 }
 
 export const breakApartRatio = (ratio: string) => {
   const ratioArr = ratio.split(':').map((value, index) => {
     if (index > 2 || !Number(value)) {
-      throw new Error(`${ratio}'s an Invalid ratio format, try eg. "18:9"`)
+      throw new Error(
+        `${ratio}'s an Invalid ratio format, try eg. "18:9"`
+      )
     }
     return Number(value);
   });

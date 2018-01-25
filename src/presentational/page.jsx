@@ -1,4 +1,3 @@
-// @flow
 // see note for why this using * as React:
 // https://flow.org/en/docs/react/children/
 import * as React from 'react';

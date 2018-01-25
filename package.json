@@ -16,6 +16,7 @@
     "flow": "flow"
   },
   "devDependencies": {
+    "ramda": "^0.25.0",
     "rxjs-es": "^5.0.0-beta.12"
   }
 }
