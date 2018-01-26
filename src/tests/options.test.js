@@ -1,18 +1,19 @@
 import Options, {
-  defaultLayout,
-  defaultRatio
+  defaultOptions
 } from '../tate/options.js';
 
 test('Test options', () => {
-  const optionsExample = {
+  const optionsStart = {
     layout: "18:9", 
     ratio: "complex"
   }
-  const defaultExample = Object.assign({},
-    defaultLayout,
-    defaultRatio
-  )
-  expect(Options(optionsExample)).toEqual(optionsExample);
+  // this feels dodgy
+  const defaultExample = defaultOptions();
+  expect(Options(optionsStart)).toEqual(Object.assign(
+    {}, 
+    defaultExample, 
+    optionsStart
+  ));
   expect(Options()).toEqual(defaultExample);
   
 });

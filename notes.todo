@@ -23,7 +23,7 @@ Testing:
 
 Todo: 
   ✔ add functions for defining width to organise @done(18-01-25 16:01)
-  ☐ make defaults
+  ✔ make function for defining defaults @done(18-01-26 12:06)
   ☐ start off defining images explicitely
   ☐ work out simple algorithm for placing images
   ☐ different placements
@@ -44,4 +44,3 @@ Work out images size and position:
 
   ☐ given how many images there are
     ☐ if < 3 || > 8 throw error
-  ☐ 
