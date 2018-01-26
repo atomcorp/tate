@@ -1,7 +1,7 @@
 // see note for why this using * as React:
 // https://flow.org/en/docs/react/children/
 import * as React from 'react';
-import img from '../assets/breanna-galley-64436.jpg';
+import { images } from '../tate/debug.js';
 import Tate from '../tate/tate.js';
 
 type Props = {
@@ -16,9 +16,31 @@ const Container = function (props: Props) {
   );
 }
 
-const Image = function (props: { passKey: number}) {
+class TateDiv extends React.Component {
+  constructor(props) {
+    super(props);
+    this.initTate = this.initTate.bind(this);
+  }
+  initTate(el) {
+    if (el) {
+      Tate(el);
+    }
+  }
+  render() {
+    return (
+      <div
+        className="tate"
+        ref={self => this.initTate(self)}
+      >
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+const Image = function (props: { url: string}) {
   return (
-    <img src={img} alt=""/>
+    <img src={props.url} alt=""/>
   )
 }
 
@@ -29,11 +51,10 @@ class Canvas extends React.Component {
     this.initTate = this.initTate.bind(this);
   }
 
-  initTate(canvas) {
-    if (canvas) {
-      Tate(canvas);
+  initTate(el) {
+    if (el) {
+      Tate(el);
     }
-    
   }
 
   render() {
@@ -55,10 +76,14 @@ const Page = () => {
 
   return(
     <Container>
-    {/* {Array.from(Array(6)).map((val, i) => {
-      return <Image key={i} />;
-    }) } */}
-      <Canvas />
+      <TateDiv>
+        {
+          images.map((val, i) => {
+            return <Image url={val} key={i} />;
+          }) 
+        }
+      </TateDiv>
+      {/* <Canvas /> */}
     </Container >
   );
 }

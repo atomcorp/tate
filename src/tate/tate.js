@@ -4,14 +4,12 @@ import ContainerDimensions from './container-dimensions.js';
 import Options from './options.js';
 type ContainerType = HTMLCanvasElement;
 
-
 const Tate = function(container: ContainerType, options = {}) {
-  if (!(container instanceof HTMLCanvasElement)) {
-    throw new Error(`${container} is not a Canvas element`)
+  if (!(container instanceof HTMLElement)) {
+    throw new Error(`${container} is not a HTML element`)
   }
   const getDimensions = ContainerDimensions(implicitDimensions(container));
   const getOptions = Options(options);
-  console.log(getOptions)
 }
 
 type Ratio = {
