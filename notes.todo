@@ -23,8 +23,8 @@ Testing:
 
 Todo: 
   ✔ add functions for defining width to organise @done(18-01-25 16:01)
+  ☐ make defaults
   ☐ start off defining images explicitely
-  ☐ make 
   ☐ work out simple algorithm for placing images
   ☐ different placements
   ☐ add event listeners on small images
