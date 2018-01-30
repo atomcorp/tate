@@ -75,7 +75,7 @@ const canvasOrIMGChildren = 'IMGChildren';
 
 const Page = () => {
 
-  return(
+  return (
     <Container>
       {
         canvasOrIMGChildren === 'IMGChildren' 

@@ -31,23 +31,31 @@ export const containerChildren = (
       throw new Error(`No hi res images`)
     }
     // check if low or high res
-    return Object.assign(
-      {}, 
-      acc, 
-      {
-        loRes: Object.assign(
-          {}, 
-          acc.loRes,
-          imageObject(image.src, image.title, index)
-        ),
-        hiRes: Object.assign(
-          {},
-          acc.hiRes,
-          imageObject(image.dataset['tateHires'], image.title, index)
-        )
-      }
-    );
+    return flattenMergeChildren(acc, image, index);
   }, {loRes: {}, hiRes: {}})
+}
+
+const flattenMergeChildren = (
+  acc: objectType, 
+  image: { loRes: imageObjType, hiRes: imageObjType }, 
+  index: number
+) => {
+  return Object.assign(
+    {},
+    acc,
+    {
+      loRes: Object.assign(
+        {},
+        acc.loRes,
+        imageObject(image.src, image.title, index)
+      ),
+      hiRes: Object.assign(
+        {},
+        acc.hiRes,
+        imageObject(image.dataset['tateHires'], image.title, index)
+      )
+    }
+  );
 }
 
 // return an imageObjType
