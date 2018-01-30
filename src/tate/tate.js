@@ -1,7 +1,8 @@
 // import Rx from 'rxjs/Rx';
-import { images } from './debug.js';
+// import { images } from './debug.js';
 import ContainerDimensions from './container-dimensions.js';
 import Options from './options.js';
+import Images from './images.js';
 type ContainerType = HTMLCanvasElement;
 
 const Tate = function(container: ContainerType, options = {}) {
@@ -10,11 +11,8 @@ const Tate = function(container: ContainerType, options = {}) {
   }
   const getDimensions = ContainerDimensions(implicitDimensions(container));
   const getOptions = Options(options);
-}
-
-type Ratio = {
-  width: number,
-  height: number
+  const getImages = Images(container); 
+  return { getDimensions, getOptions, getImages };
 }
 
 const implicitDimensions = (container: ContainerType) => {

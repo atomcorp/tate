@@ -4,6 +4,17 @@ import Images, {
 
 import {images} from '../tate/debug.js';
 
+const imageListToPassIn = {
+  hires: ['/hi-res/img1.jpg', '/hi-res/img2.jpg'],
+  loRes: ['/lo-res/img1.jpg', '/lo-res/img2.jpg']
+}
+
+const imageListToReturn = {
+  hires: {
+    
+  }
+}
+
 const generateImgs = (sources) => {
   return sources.map((src) => {
     const img = document.createElement('img');

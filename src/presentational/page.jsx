@@ -23,15 +23,14 @@ class TateDiv extends React.Component {
   }
   initTate(el) {
     if (el) {
-      Tate(el);
+      Tate(el, {});
     }
   }
   render() {
     return (
       <div
         className="tate"
-        ref={self => this.initTate(self)}
-      >
+        ref={self => this.initTate(self)} >
         {this.props.children}
       </div>
     );
@@ -40,7 +39,7 @@ class TateDiv extends React.Component {
 
 const Image = function (props: { url: string}) {
   return (
-    <img src={props.url} alt=""/>
+    <img src={props.url} data-tate-hires={props.url} alt=""/>
   )
 }
 
@@ -72,19 +71,26 @@ class Canvas extends React.Component {
   }
 }
 
+const canvasOrIMGChildren = 'IMGChildren';
+
 const Page = () => {
 
   return(
     <Container>
-      <TateDiv>
-        {
-          images.map((val, i) => {
-            return <Image url={val} key={i} />;
-          }) 
-        }
-      </TateDiv>
-      {/* <Canvas /> */}
-    </Container >
+      {
+        canvasOrIMGChildren === 'IMGChildren' 
+        ? (
+            <TateDiv>
+              {
+                images.map((val, i) => {
+                  return <Image url={val} key={i} />;
+                })
+              }
+            </TateDiv>
+        )
+        : <Canvas />
+      }
+      </Container >
   );
 }
 

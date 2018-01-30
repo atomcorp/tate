@@ -36,11 +36,16 @@ Initial run:
   
 
 Work out images size and position:
-  ☐ return a width and height
+  ✔ return a width and height @done(18-01-26 12:09)
     ✔ given a width and height that represents container, else @done(18-01-25 14:54)
     ✘ will have to lookup width from container @cancelled(18-01-25 14:54)
     ✔ if given ratio, use that and width to calc height @done(18-01-25 14:54)
     ✔ if not use default ratio @done(18-01-25 14:54)
 
+Work out where images are and form an object of them:
+  ☐ images can be gathered from,
+    ☐ container's children
+    ☐ defined in object
   ☐ given how many images there are
     ☐ if < 3 || > 8 throw error
+  ☐ creates, and returns an object
