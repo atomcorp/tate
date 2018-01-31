@@ -37,9 +37,13 @@ class TateDiv extends React.Component {
   }
 }
 
-const Image = function (props: { url: string}) {
+const Image = function (props: { url: string, title: string}) {
   return (
-    <img src={props.url} data-tate-hires={props.url} alt=""/>
+    <img 
+    src={props.url} 
+    data-tate-hires={props.url} 
+    alt=""
+    title={props.title} />
   )
 }
 
@@ -83,7 +87,7 @@ const Page = () => {
             <TateDiv>
               {
                 images.map((val, i) => {
-                  return <Image url={val} key={i} />;
+                  return <Image url={val} title={`title${i}`} key={i} />;
                 })
               }
             </TateDiv>

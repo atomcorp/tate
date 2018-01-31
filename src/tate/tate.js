@@ -3,15 +3,14 @@
 import ContainerDimensions from './container-dimensions.js';
 import Options from './options.js';
 import Images from './images.js';
-type ContainerType = HTMLCanvasElement;
 
-const Tate = function(container: ContainerType, options = {}) {
+const Tate = function(container, options = {}) {
   if (!(container instanceof HTMLElement)) {
     throw new Error(`${container} is not a HTML element`)
   }
   const getDimensions = ContainerDimensions(implicitDimensions(container));
   const getOptions = Options(options);
-  const getImages = Images(container); 
+  const getImages = Images(container.childNodes); 
   return { getDimensions, getOptions, getImages };
 }
 
