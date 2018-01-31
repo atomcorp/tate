@@ -60,8 +60,7 @@ const finalImageList = {
     id: 2
   }
 }
-test('turn nodelist of images into obj', () => {
-  
+test('turn nodelist of images into object, or validate object', () => {
   expect(Images(imgs)).toEqual(finalImageList);
   expect(() => {
     Images(failImgs);
