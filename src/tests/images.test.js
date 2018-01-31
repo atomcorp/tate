@@ -20,6 +20,15 @@ const generateImgs = (sources) => {
   }) 
 }
 
+const generateFailingImages = (sources) => {
+  return sources.map((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.title = `title${i}`
+    return img;
+  }) 
+}
+
 const generateNodelist = (imgs) => {
   const div = document.createElement('img');
   div.classList.add('tate');
@@ -30,7 +39,7 @@ const generateNodelist = (imgs) => {
 }
 
 const imgs = generateNodelist(generateImgs(imageListToPassIn));
-
+const failImgs = generateNodelist(generateFailingImages(imageListToPassIn));
 test('turn nodelist of images into obj', () => {
   
   expect(Images(imgs)).toEqual({
@@ -52,5 +61,8 @@ test('turn nodelist of images into obj', () => {
       title: 'title2',
       id: 2
     }
-  })
+  });
+  expect(() => {
+    Images(failImgs);
+  }).toThrow();
 });
