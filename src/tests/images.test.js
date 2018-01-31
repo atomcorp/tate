@@ -40,29 +40,34 @@ const generateNodelist = (imgs) => {
 
 const imgs = generateNodelist(generateImgs(imageListToPassIn));
 const failImgs = generateNodelist(generateFailingImages(imageListToPassIn));
+const finalImageList = {
+  "0": {
+    loRes: imageListToPassIn[0],
+    hiRes: imageListToPassIn[0],
+    title: 'title0',
+    id: 0
+  },
+  "1": {
+    loRes: imageListToPassIn[1],
+    hiRes: imageListToPassIn[1],
+    title: 'title1',
+    id: 1
+  },
+  "2": {
+    loRes: imageListToPassIn[2],
+    hiRes: imageListToPassIn[2],
+    title: 'title2',
+    id: 2
+  }
+}
 test('turn nodelist of images into obj', () => {
   
-  expect(Images(imgs)).toEqual({
-    "0": {
-      loRes: imageListToPassIn[0],
-      hiRes: imageListToPassIn[0],
-      title: 'title0',
-      id: 0
-    },
-    "1": {
-      loRes: imageListToPassIn[1],
-      hiRes: imageListToPassIn[1],
-      title: 'title1',
-      id: 1
-    },
-    "2": {
-      loRes: imageListToPassIn[2],
-      hiRes: imageListToPassIn[2],
-      title: 'title2',
-      id: 2
-    }
-  });
+  expect(Images(imgs)).toEqual(finalImageList);
   expect(() => {
     Images(failImgs);
+  }).toThrow();
+  expect(Images(finalImageList)).toEqual(finalImageList);
+  expect(() => {
+    Images({ fail: 'me' })
   }).toThrow();
 });

@@ -1,19 +1,29 @@
 // @flow
 
-type containerType = NodeList<HTMLImageElement>;
-// eg start with
-// const imageListToPassIn = {
-//   hires: ['/hi-res/img1.jpg', '/hi-res/img2.jpg'],
-//   loRes: ['/lo-res/img1.jpg', '/lo-res/img2.jpg']
-// }
-
-const Images = (imageNodeList: containerType) => {
-  // check if html container or object of arrays
-  return containerChildren(imageNodeList);
+type nodeListType = NodeList<HTMLImageElement>;
+type objectListType = {
+  index: {
+    loRes: string,
+    hiRes: string,
+    title: string,
+    index: number
+  }
 }
 
-export const containerChildren = (
-  children: containerType
+const Images = (imageList: nodeListType | objectListType) => {
+  // everything in 
+  if (!(imageList instanceof NodeList)) {
+    return validateObjectList(imageList)
+  }
+  if (imageList instanceof NodeList) {
+    return handleNodeList(imageList);
+  }
+  // check if nodeList or object of arrays
+  throw Error('Invalid image list past to Images()')
+}
+
+export const handleNodeList = (
+  children: nodeListType
 ) => {
   return Array.from(children).reduce((acc, image, index) => {
     // check is an image and has correct data attribute
@@ -67,6 +77,23 @@ const imageObject = (
       id: index
     }
   }
+}
+
+const validateObjectList = (imageObject: objectListType) => {
+  const imageKeys = Object.keys(imageObject);
+  if (imageKeys.length < 2) {
+    throw Error('You need at least 2 images');
+  }
+  // ensure imageObject matches correct format, else throw error
+  imageKeys.forEach((key) => {
+    if (!imageObject[key].hasOwnProperty('loRes')) {
+      throw Error('Image objects need loRes property');
+    }
+    if (!imageObject[key].hasOwnProperty('hiRes')) {
+      throw Error('Image objects need hiRes property');
+    }
+  });
+  return imageObject;
 }
 
 export default Images;
