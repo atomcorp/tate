@@ -7,9 +7,9 @@ type containerType = NodeList<HTMLImageElement>;
 //   loRes: ['/lo-res/img1.jpg', '/lo-res/img2.jpg']
 // }
 
-const Images = (imageNodes: containerType) => {
+const Images = (imageNodeList: containerType) => {
   // check if html container or object of arrays
-  return containerChildren(imageNodes);
+  return containerChildren(imageNodeList);
 }
 
 export const containerChildren = (
@@ -36,7 +36,7 @@ const flattenMergeChildren = (
       acc,
       imageObject(
         image.src, 
-        image.dataset['tateHires'], 
+        image.getAttribute('data-tate-hires'), 
         image.title, index
       )
     )
@@ -47,7 +47,7 @@ const validateImage = (image) => {
   if (!image instanceof HTMLImageElement) {
     throw new Error(`Non <img /> element included`);
   }
-  if (!image.dataset.hasOwnProperty('tateHires')) {
+  if (!image.getAttribute('data-tate-hires')) {
     throw new Error(`No hi res images`)
   }
 }
@@ -63,7 +63,8 @@ const imageObject = (
     [index.toString()]: {
       loRes: loRes,
       hiRes: hiRes,
-      title: title
+      title: title,
+      id: index
     }
   }
 }
